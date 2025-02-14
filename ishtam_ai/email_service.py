@@ -62,13 +62,13 @@ def send_email(receiver_email, subject, email_content, sender_name, image_data=N
     except Exception as e:
         print(f"Email failed: {e}")
 
-# ✅ Function to Generate and Send Romantic Emails
+# Function to Generate and Send Romantic Emails
+import base64
+
 def send_selected_content(receiver_email, recipient_name, sender_name, content_type, preferences={}, uploaded_image=None):
     """
-    Generates and sends an email with romantic content and a natural, heartfelt subject.
+    Generates and sends an email with romantic content and ensures a consistent format for recurring emails.
     """
-
-    # ✅ Content Generation Functions
     content_generators = {
         "Love Poem": get_love_poem,
         "Love Story": get_heartfelt_story,
@@ -81,13 +81,13 @@ def send_selected_content(receiver_email, recipient_name, sender_name, content_t
     }
 
     if content_type not in content_generators:
-        print(f"Invalid content type: {content_type}! Please select a valid option.")
+        print(f"❌ Invalid content type: {content_type}! Please select a valid option.")
         return
 
-    # ✅ Generate the Personalized Content
+    # ✅ Generate Consistent Content
     generated_content = content_generators[content_type](preferences)
 
-    # Create a Natural, Warm Email Subject
+    # ✅ Create Simple, Warm, and Natural Email Subject
     subject_templates = {
         "Love Poem": f"{recipient_name}, I Wrote This Just for You",
         "Love Story": f"A Little Love Story... Maybe..Us?",
@@ -106,15 +106,18 @@ def send_selected_content(receiver_email, recipient_name, sender_name, content_t
         email_subject = remove_emojis(email_subject)
         generated_content = remove_emojis(generated_content)
 
+    # ✅ Fix Line Break Formatting for Recurring Emails
+    formatted_content = generated_content.replace("\n", "<br>")
+
     # 📩 **Format Email Content**
     email_content = f"""
     <html>
     <body style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <p>{generated_content}</p>
+        <p>{formatted_content}</p>
         <br>
     """
 
-    # 📸 **Embed Image if Selfie Message**
+    # 📸 **Handle Image (Embed for Selfie, Attach Otherwise)**
     image_data = None
     image_filename = None
     if content_type == "Selfie Message" and uploaded_image is not None:

@@ -1,24 +1,59 @@
-# 💖 Ishtam AI - AI-Powered Love Message Generator  
+# Ishtam AI - Custom AI-Powered Email Message Generator  
 
-Ishtam AI is a romantic message generator powered by AI! It lets you send love notes, schedule emails, get date ideas, and chat with AI to craft heartfelt messages.  
+Ishtam AI is a custom email message generator powered by AI! It lets you send love notes, schedule emails, get date ideas, and chat with AI to craft heartfelt messages, based on certain personalisation metrics to factor in your partner's tastes/desires/preferences!
 
 ## Installation & Setup  
 
+### Preferably a virtual env
+
+```
+python -m venv ishtam
+```
+Activating the environment
+
+```
+source ishtam/bin/activate
+
+```
+
+
 ### Install the Package  
 Install Ishtam AI from PyPI using:  
+
 ```
  pip install ishtam_ai 
 ```
+
 Verify the installation to ensure it is set up correctly:  
+
 ```
  python -c "import ishtam_ai; print('Package installed successfully!')" 
 ```
 
 ### Install & Run Ollama (For AI Responses)  
-Ollama is required for AI-generated love messages. Install Ollama using:  
+Ollama is required for AI-generated love messages. Install Ollama using: 
+
+For Linux:
+
 ```
  curl -fsSL https://ollama.com/install.sh | sh 
 ```
+
+For MacOS/Windows
+
+In case, brew is not installed
+
+```
+install brew
+```
+If brew is already installed
+
+```
+brew install ollama
+```
+
+Once Ollama is installed, make sure you always
+
 Start the Ollama server before launching the app:  
 ```
  ollama serve 
@@ -36,7 +71,8 @@ To send love emails, set up your email environment variables:
  export EMAIL_ADDRESS="your-email@gmail.com" 
  export EMAIL_PASSWORD="your-app-password" 
 ```
-Gmail users must generate an App Password from Google App Passwords instead of using their regular password. Check if they are set correctly:  
+
+Gmail users must generate 16 digit App Password from Google App Passwords instead of using their regular password. Check if they are set correctly:  
 ```
  echo $EMAIL_ADDRESS 
  echo $EMAIL_PASSWORD 
@@ -44,16 +80,13 @@ Gmail users must generate an App Password from Google App Passwords instead of u
 
 ### Run the Streamlit App  
 First, check where the application file is located using:  
-```
- ls ishtam_ai/ 
+
+Launch the streamlit app
+
 ```
 If the application file is inside the Ishtam AI directory, use the appropriate command to run Streamlit:  
 ```
- streamlit run ishtam_ai/app.py 
-```
-If the application file is in the project root, use the corresponding command:  
-```
- streamlit run app.py 
+ streamlit run $(python -c "import ishtam_ai; print(ishtam_ai.__path__[0])")/app.py
 ```
 
 ## Using the App  
