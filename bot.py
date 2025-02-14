@@ -211,3 +211,5 @@ if recipient_name:
         if st.button("📅 **Start Sending Random Emails**"):
             schedule_random_emails(receiver_email, recipient_name, interval, times)
             st.success(f"Random emails scheduled every {interval} minutes for {times} times!")
+
+
