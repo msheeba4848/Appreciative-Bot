@@ -35,16 +35,16 @@ def chatbot_response(user_message, preferences=None):
 
 # the selective functions to know your partner better
 def get_love_poem(preferences):
-    return chatbot_response("Write a short, 4-line romantic poem.", preferences)
+    return chatbot_response("Write a short romantic poem, which your partner. Make sure it shows your love.", preferences)
 
 def get_heartfelt_story(preferences):
-    return chatbot_response("Write a short romantic story for a couple.", preferences)
+    return chatbot_response("Write a short romantic story for a couple, make sure it's heartfelt and short.", preferences)
 
 def get_movie_recommendation(preferences):
-    return chatbot_response("Suggest a romantic movie for a couple to watch.", preferences)
+    return chatbot_response("Suggest a romantic movie for a couple to watch, just list out 5 movies in bullet points", preferences)
 
 def get_random_date_idea(preferences):
-    return chatbot_response("Suggest a unique date idea.", preferences)
+    return chatbot_response("Suggest a unique date idea for the couple", preferences)
 
 def get_random_selfie(preferences):
     return chatbot_response("Write a sweet message to accompany a couple's selfie.", preferences)
@@ -124,7 +124,7 @@ def send_selected_content(receiver_email, recipient_name, content_type, sender= 
             <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
             <p style="color: #FF4081; font-size: 14px; text-align: center;">
-                <em>Always yours, with love {sender} 💕</em>
+                <em>Always yours, with love {sender}</em>
             </p>
         </div>
     </body>
