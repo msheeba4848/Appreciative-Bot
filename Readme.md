@@ -124,6 +124,15 @@ Once the Streamlit app launches, you can:
 
 ---
 
+## Upgrading the App
+
+```
+pip install --upgrade ishtam_ai
+
+```
+
+---
+
 ## Troubleshooting  
 
 **Ollama Not Running?**  
