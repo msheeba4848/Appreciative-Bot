@@ -1,0 +1,38 @@
+brew install ollama
+
+ollama --version
+
+
+Warning: could not connect to a running Ollama instance
+Warning: client version is 0.5.9
+(new_env) sheebamoghal@Sheebas-MacBook-Pro-4 lovebot % ollama run mistral
+
+Error: could not connect to ollama app, is it running?
+(new_env) sheebamoghal@Sheebas-MacBook-Pro-4 lovebot % ollama serve
+
+Couldn't find '/Users/sheebamoghal/.ollama/id_ed25519'. Generating new private key.
+Your new public key is: 
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDDfWVSJcxBRcV4czLm1pipyffGsIxIuroWpR910S7z0
+
+2025/02/13 18:54:01 routes.go:1186: INFO server config env="map[HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/Users/sheebamoghal/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://*] OLLAMA_SCHED_SPREAD:false http_proxy: https_proxy: no_proxy:]"
+time=2025-02-13T18:54:01.594-05:00 level=INFO source=images.go:432 msg="total blobs: 0"
+time=2025-02-13T18:54:01.594-05:00 level=INFO source=images.go:439 msg="total unused blobs removed: 0"
+time=2025-02-13T18:54:01.595-05:00 level=INFO source=routes.go:1237 msg="Listening on 127.0.0.1:11434 (version 0.5.9)"
+time=2025-02-13T18:54:01.676-05:00 level=INFO source=types.go:130 msg="inference compute" id=0 library=metal variant="" compute="" driver=0.0 name="" total="5.3 GiB" available="5.3 GiB"
+
+ollama pull mistral
+
+ollama serve
+ollama pull mixtral:8x22b
+
+
+export EMAIL_ADDRESS="your-email@gmail.com"
+export EMAIL_PASSWORD="your-16-digit-app-password"
+
+paxl vnkl cofm osby
+
+export EMAIL_PASSWORD="paxl vnkl cofm osby"
+
+export EMAIL_ADDRESS="msheeba00@gmail.com"
+export EMAIL_PASSWORD="paxl vnkl cofm osby"
