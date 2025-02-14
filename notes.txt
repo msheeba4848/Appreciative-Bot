@@ -36,3 +36,5 @@ export EMAIL_PASSWORD="paxl vnkl cofm osby"
 
 export EMAIL_ADDRESS="msheeba00@gmail.com"
 export EMAIL_PASSWORD="paxl vnkl cofm osby"
+
+pip install --upgrade pip setuptools wheel

@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ishtam_ai"
+version = "1.0.0"
+description = "A love message generator and scheduler using AI."
+authors = [{name = "Sheeba Moghal"}]
+license = {text = "MIT"}
+dependencies = [
+    "streamlit",
+    "ollama"
+]
+
+[project.scripts]
+ishtam-ai = "ishtam_ai.app:main"
