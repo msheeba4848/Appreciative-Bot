@@ -22,3 +22,7 @@ def get_cuisine_recipe(preferences):
 
 def get_love_you_message(preferences):
     return chatbot_response("Write a short, heartfelt 'I love you' message for a partner.", preferences)
+
+def send_10_songs(preferences):
+    song_genre = preferences.get("song_genre", "Romantic")  # Default genre
+    return chatbot_response(f"Suggest 10 romantic songs from the {song_genre} genre in a numbered list.", preferences)

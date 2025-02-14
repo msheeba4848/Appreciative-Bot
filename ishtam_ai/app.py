@@ -1,7 +1,9 @@
-import streamlit as st
-from ishtam_ai import chatbot_response, send_selected_content, schedule_random_emails
+# ✅ Ensure correct relative imports
+from ishtam_ai.chatbot import chatbot_response
+from ishtam_ai.email_service import send_selected_content
+from ishtam_ai.scheduler import schedule_random_emails
 
-st.title("Ishtam AI 💖")
+st.title("Ishtam AI")
 st.markdown("### **Send a Love Note, Schedule Messages, or Chat with AI!**")
 
 recipient_name = st.text_input("**What is your partner's name?**")
@@ -11,8 +13,22 @@ if recipient_name:
 
     if mode == "Instant Email":
         content_choice = st.selectbox("💌 **Choose what to send:**", [
-            "Love Poem", "Love Story", "Movie Recommendation", "Date Idea", "Selfie Message", "Cuisine Recipe", "Personalized ILY Message"
+            "Love Poem", "Love Story", "Movie Recommendation", "Date Idea",
+            "Selfie Message", "Cuisine Recipe", "Send 10 Songs", "Personalized ILY Message"
         ])
+        preferences = {}
+
+        # 🎵 **Song Genre Selection** (For "Send 10 Songs")
+        if content_choice == "Send 10 Songs":
+            song_genre = st.selectbox("🎶 **Choose a song genre:**", [
+                "Romantic", "Jazz", "Pop", "R&B", "Classic Love Songs", "Indie Love", "Soft Rock"
+            ])
+            preferences["song_genre"] = song_genre
+
+        # 🍽️ **Cuisine Selection** (For "Cuisine Recipe")
+        if content_choice == "Cuisine Recipe":
+            preferences["cuisine"] = st.selectbox("🍽 **Choose a Cuisine:**", ["Italian", "French", "Japanese", "Indian", "Mexican"])
+        
         if st.button("💖 **Send Now!**"):
             send_selected_content(receiver_email, recipient_name, content_choice)
             st.success(f"💌 {content_choice} sent successfully!")

@@ -3,15 +3,24 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ishtam_ai"  # <--- Make sure this name is available on PyPI!
-version = "1.0.0"
-description = "A love message generator and scheduler using AI."
-authors = [{name = "Sheeba Moghal"}]
-license = {text = "MIT"}
+name = "ishtam_ai"
+version = "1.0.2"  # Increment version for a new release
+description = "An AI-powered chatbot and email automation package with Streamlit UI"
+authors = [{ name = "Sheeba Moghal", email = "your-email@gmail.com" }]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
 dependencies = [
     "streamlit",
-    "ollama"
+    "ollama",
+    "requests",
+    "pandas",
+    "numpy"
 ]
 
 [tool.setuptools]
 packages = ["ishtam_ai"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+ishtam_ai = ["*.py"]  # Ensures ALL `.py` files including `app.py` are included

@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 
 from .content_generator import (
     get_love_poem, get_heartfelt_story, get_movie_recommendation, 
-    get_random_date_idea, get_random_selfie, get_cuisine_recipe, get_love_you_message
+    get_random_date_idea, get_random_selfie, get_cuisine_recipe, get_love_you_message, send_a_song
 )
 
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
@@ -29,11 +29,10 @@ def send_email(receiver_email, subject, email_content):
     except Exception as e:
         print(f"❌ Email failed: {e}")
 
-def send_selected_content(receiver_email, recipient_name, content_type):
+def send_selected_content(receiver_email, recipient_name, content_type, preferences={}):
     """
     Generates and sends an email with romantic content.
     """
-    preferences = {}
 
     content_generators = {
         "Love Poem": get_love_poem,
@@ -42,7 +41,8 @@ def send_selected_content(receiver_email, recipient_name, content_type):
         "Date Idea": get_random_date_idea,
         "Selfie Message": get_random_selfie,
         "Cuisine Recipe": get_cuisine_recipe,
-        "Personalized ILY Message": get_love_you_message
+        "Personalized ILY Message": get_love_you_message,
+        "Send 10 Songs": send_10_songs  # ✅ Kept only "Send 10 Songs"
     }
 
     if content_type not in content_generators:
