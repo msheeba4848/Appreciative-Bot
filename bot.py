@@ -8,14 +8,14 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# Storing user preferences & tracking scheduled emails
+# storing user preferences & tracking scheduled emails
 user_preferences = {}
 scheduled_emails = {}
 
-# Sender's name
+# senders email
 sender = "Sheeba Moghal"
 
-# Maintaining chat history
+# making sure chat history is maintaned
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
@@ -63,13 +63,8 @@ def get_love_you_message(preferences):
     return chatbot_response("Write a short, heartfelt 'I love you' message for a partner.", preferences)
 
 # Email setup
-#EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-#EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-
-# Load secrets from Streamlit's settings
-EMAIL_ADDRESS = st.secrets["EMAIL_ADDRESS"]
-EMAIL_PASSWORD = st.secrets["EMAIL_PASSWORD"]
-
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
 if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
     raise ValueError("🚨 ERROR: EMAIL_ADDRESS or EMAIL_PASSWORD environment variable is not set!")
