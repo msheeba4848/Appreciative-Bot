@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ishtam_ai"
+name = "ishtam_ai"  # <--- Make sure this name is available on PyPI!
 version = "1.0.0"
 description = "A love message generator and scheduler using AI."
 authors = [{name = "Sheeba Moghal"}]
@@ -13,5 +13,5 @@ dependencies = [
     "ollama"
 ]
 
-[project.scripts]
-ishtam-ai = "ishtam_ai.app:main"
+[tool.setuptools]
+packages = ["ishtam_ai"]
