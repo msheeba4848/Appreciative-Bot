@@ -61,9 +61,9 @@ def send_email(receiver_email, subject, email_content, sender_name, image=None):
     except Exception as e:
         print(f"Email failed: {e}")
 
-def send_selected_content(receiver_email, recipient_name, sender_name, content_type, preferences={}, image=None):
+def send_selected_content(receiver_email, recipient_name, sender_name, content_type, preferences={}, uploaded_image=None):
     """
-    Generates and sends an email with romantic content, with optional image attachments.
+    Generates and sends an email with romantic content and a natural, heartfelt subject.
     """
     content_generators = {
         "Love Poem": get_love_poem,
@@ -73,25 +73,43 @@ def send_selected_content(receiver_email, recipient_name, sender_name, content_t
         "Selfie Message": get_random_selfie,
         "Cuisine Recipe": get_cuisine_recipe,
         "Personalized ILY Message": get_love_you_message,
-        "Send 10 Songs": send_10_songs  
+        "Send 10 Songs": send_10_songs
     }
 
     if content_type not in content_generators:
         print(f"Invalid content type: {content_type}! Please select a valid option.")
         return
 
-    generated_content = content_generators[content_type](preferences)
-    generated_content = remove_emojis(generated_content)  # Remove any emojis
+    generated_content = content_generators[content_type](preferences)  # Generate content
 
+    # 💌 **Create Natural, Warm Email Subject**
+    subject_templates = {
+        "Love Poem": f"{recipient_name}, I Wrote This Just for You ❤️",
+        "Love Story": f"A Little Love Story... About Us 💕",
+        "Movie Recommendation": f"Movie Night? I Picked Something Special 🍿",
+        "Date Idea": f"Let's Make This a Night to Remember ✨",
+        "Selfie Message": f"Just Thinking of Us 📸",
+        "Cuisine Recipe": f"Let's Cook Something Romantic Tonight 🍽️",
+        "Personalized ILY Message": f"Just Wanted to Say... I Love You ❤️",
+        "Send 10 Songs": f"Songs That Remind Me of Us 🎶"
+    }
 
+    email_subject = subject_templates.get(content_type, "A Special Message for You 💌")
+
+    # 📩 **Format Email Content**
     email_content = f"""
     <html>
-    <body>
-        <p style="white-space: pre-line;">{generated_content}</p>
-        <p>With love, {sender_name}</p>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <p>{generated_content}</p>
+        <br>
+        <p>With love,</p>
+        <p><strong>{sender_name}</strong></p>
     </body>
     </html>
     """
+
+    send_email(receiver_email, email_subject, email_content)
+
 
 
     # ✅ If it's a selfie message, send with image attachment

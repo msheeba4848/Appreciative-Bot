@@ -17,16 +17,31 @@ def collect_preferences(content_choice):
             ["Romantic", "Jazz", "Pop", "R&B", "Classic Love Songs", "Indie Love", "Soft Rock"]
         )
 
-    # 🍽 Cuisine Selection
+    # 🍽 Cuisine Selection with Dietary Preferences
     if content_choice == "Cuisine Recipe":
         preferences["cuisine"] = st.selectbox(
             "🍽 **Choose a Cuisine:**",
             ["Italian", "French", "Japanese", "Indian", "Mexican"]
         )
+        
+        preferences["diet"] = st.selectbox(
+            "🥗 **Choose a Dietary Preference:**",
+            ["No Preference", "Vegetarian", "Vegan", "Gluten-Free", "Keto", "High-Protein", "Dairy-Free"]
+        )
+
+    # 🎬 Movie Genre Selection
+    if content_choice == "Movie Recommendation":
+        preferences["movie_genre"] = st.selectbox(
+            "🎥 **Choose a Movie Genre:**",
+            ["Romantic", "Drama", "Comedy", "Classic Romance", "Sci-Fi Romance", "Animated Love Stories"]
+        )
 
     # 📍 Location for Date Night Idea
     if content_choice == "Date Idea":
-        preferences["location"] = st.text_input("📍 **Enter the location for your date night idea:**", placeholder="e.g., New York, Paris, Tokyo")
+        preferences["location"] = st.text_input(
+            "📍 **Enter the location for your date night idea:**",
+            placeholder="e.g., New York, Paris, Tokyo"
+        )
 
     return preferences
 
@@ -70,16 +85,23 @@ if recipient_name and sender_name:
             st.markdown(f"**AI:**  \n\n{formatted_response}")
 
 
-
-
-
     elif mode == "Schedule Recurring Emails":
-        interval = st.number_input("**Send every X minutes:**", min_value=1, max_value=1440, value=60)
+        interval = st.number_input("⏳ **Send every X minutes:**", min_value=1, max_value=1440, value=60)
         times = st.number_input("🔁 **How many times to send?**", min_value=1, max_value=100, value=5)
 
-        if st.button("**Start Sending Random Emails**"):
+        # 📌 Allow users to select preferences to personalize random emails
+        st.markdown("### **Personalization Options for Random Emails**")
+        selected_preferences = {}
+        for content_type in ["Movie Recommendation", "Cuisine Recipe", "Send 10 Songs", "Date Idea"]:
+            st.markdown(f"**Customize {content_type}:**")
+            selected_preferences[content_type] = collect_preferences(content_type)
+
+        if st.button("📅 **Start Sending Random Emails**"):
             if receiver_email:
-                schedule_random_emails(receiver_email, recipient_name, interval, times, send_selected_content)
-                st.success(f"Random emails scheduled every {interval} minutes for {times} times to {receiver_email}!")
+                schedule_random_emails(
+                    receiver_email, recipient_name, sender_name, interval, times, send_selected_content, selected_preferences
+                )
+                st.success(f"📨 Random emails scheduled every {interval} minutes for {times} times to {receiver_email}!")
             else:
-                st.error("Please enter an email address to schedule emails.")
+                st.error("❌ Please enter an email address to schedule emails.")
+
