@@ -88,7 +88,7 @@ def send_email(receiver_email, subject, email_content):
 
 
 # ✅ Function to send a single email
-def send_selected_content(receiver_email, recipient_name, content_type):
+def send_selected_content(receiver_email, recipient_name, content_type, sender= sender):
     preferences = user_preferences.get(receiver_email, {})
 
     content_generators = {
@@ -116,8 +116,6 @@ def send_selected_content(receiver_email, recipient_name, content_type):
     <html>
     <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
         <div style="max-width: 600px; margin: auto; background: white; padding: 10px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
-            
-            <h2 style="color: #E91E63; font-size: 15px; text-align: left;">A Special {content_type} for {recipient_name}</h2>
 
             <div style="text-align: left; padding: 15px 25px; line-height: 1.6; font-size: 16px; color: #444;">
                 {formatted_content}
@@ -189,6 +187,13 @@ if recipient_name:
             response = chatbot_response(user_input)
             st.session_state.chat_history.append(f"**You:** {user_input}")
             st.session_state.chat_history.append(f"**AI:** {response}")
+            
+    elif mode == "Schedule Recurring Emails":
+        interval = st.number_input("⏳ **Send every X minutes:**", min_value=1, max_value=1440, value=60)
+        times = st.number_input("🔁 **How many times to send?**", min_value=1, max_value=100, value=5)
+        if st.button("📅 **Start Sending Random Emails**"):
+            schedule_random_emails(receiver_email, recipient_name, interval, times)
+            st.success(f"📩 Random emails scheduled every {interval} minutes for {times} times!")
 
         for chat in st.session_state.chat_history:
             st.write(chat)
