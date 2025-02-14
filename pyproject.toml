@@ -1,10 +1,6 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "ishtam_ai"
-version = "1.0.2"  # Increment version for a new release
+version = "1.0.5"  # Incremented version
 description = "An AI-powered chatbot and email automation package with Streamlit UI"
 authors = [{ name = "Sheeba Moghal", email = "your-email@gmail.com" }]
 readme = "README.md"

@@ -2,6 +2,7 @@
 from ishtam_ai.chatbot import chatbot_response
 from ishtam_ai.email_service import send_selected_content
 from ishtam_ai.scheduler import schedule_random_emails
+import streamlit as st
 
 st.title("Ishtam AI")
 st.markdown("### **Send a Love Note, Schedule Messages, or Chat with AI!**")
@@ -30,8 +31,9 @@ if recipient_name:
             preferences["cuisine"] = st.selectbox("🍽 **Choose a Cuisine:**", ["Italian", "French", "Japanese", "Indian", "Mexican"])
         
         if st.button("💖 **Send Now!**"):
-            send_selected_content(receiver_email, recipient_name, content_choice)
+            send_selected_content(receiver_email, recipient_name, content_choice, preferences)  # ✅ Pass preferences
             st.success(f"💌 {content_choice} sent successfully!")
+
 
     elif mode == "Chat with AI":
         user_input = st.text_input("💬 **You:**")

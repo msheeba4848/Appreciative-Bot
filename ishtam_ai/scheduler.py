@@ -6,7 +6,7 @@ def schedule_random_emails(receiver_email, recipient_name, interval, times, send
     def send_recurring_email():
         content_types = [
             "Love Poem", "Love Story", "Movie Recommendation",
-            "Date Idea", "Selfie Message", "Cuisine Recipe", "Personalized ILY Message", "Send a song"
+            "Date Idea", "Selfie Message", "Cuisine Recipe", "Personalized ILY Message", "Send 10 Songs"
         ]
         for _ in range(times):
             random_content = random.choice(content_types)
