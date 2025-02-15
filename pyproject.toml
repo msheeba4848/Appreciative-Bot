@@ -1,6 +1,6 @@
 [project]
 name = "ishtam_ai"
-version = "1.0.5"  # Incremented version
+version = "1.0.9"  # Incremented version
 description = "An AI-powered chatbot and email automation package with Streamlit UI"
 authors = [{ name = "Sheeba Moghal", email = "your-email@gmail.com" }]
 readme = "README.md"
